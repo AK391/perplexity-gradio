@@ -63,7 +63,7 @@ def registry(name: str, token: str | None = None, **kwargs):
     """
     api_key = token or os.environ.get("PERPLEXITY_API_KEY")
     if not api_key:
-        raise ValueError("OPENAI_API_KEY environment variable is not set.")
+        raise ValueError("PERPLEXITY_API_KEY environment variable is not set.")
 
     pipeline = get_pipeline(name)
     inputs, outputs, preprocess, postprocess = get_interface_args(pipeline)

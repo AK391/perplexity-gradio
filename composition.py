@@ -1,10 +1,10 @@
 import gradio as gr
-import openai_gradio
+import perplexity_gradio
 
 with gr.Blocks() as demo:
-    with gr.Tab("GPT-4-turbo"):
-        gr.load('gpt-4-turbo', src=openai_gradio.registry)
-    with gr.Tab("GPT-3.5-turbo"):
-        gr.load('gpt-3.5-turbo', src=openai_gradio.registry)
+    with gr.Tab("llama-3.1-sonar-large-128k-chat"):
+        gr.load('llama-3.1-sonar-large-128k-chat', src=perplexity_gradio.registry)
+    with gr.Tab("llama-3.1-sonar-huge-128k-online"):
+        gr.load('llama-3.1-sonar-huge-128k-online', src=perplexity_gradio.registry)
 
 demo.launch()

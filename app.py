@@ -1,7 +1,7 @@
 import gradio as gr
-import openai_gradio
+import perplexity_gradio
 
 gr.load(
-    name='gpt-4-turbo',
-    src=openai_gradio.registry,
+    name='llama-3.1-sonar-huge-128k-online',
+    src=perplexity_gradio.registry,
 ).launch()

@@ -3,13 +3,16 @@ from openai import OpenAI
 import gradio as gr
 from typing import Callable
 
-__version__ = "0.0.3"
+__version__ = "0.0.1"
 
 
 def get_fn(model_name: str, preprocess: Callable, postprocess: Callable, api_key: str):
     def fn(message, history):
         inputs = preprocess(message, history)
-        client = OpenAI(api_key=api_key)
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://api.perplexity.ai"
+        )
         completion = client.chat.completions.create(
             model=model_name,
             messages=inputs["messages"],
@@ -58,7 +61,7 @@ def registry(name: str, token: str | None = None, **kwargs):
         - name (str): The name of the OpenAI model.
         - token (str, optional): The API key for OpenAI.
     """
-    api_key = token or os.environ.get("OPENAI_API_KEY")
+    api_key = token or os.environ.get("PERPLEXITY_API_KEY")
     if not api_key:
         raise ValueError("OPENAI_API_KEY environment variable is not set.")
 
